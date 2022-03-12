@@ -1,0 +1,11 @@
+version: '3'
+services:
+  redis:
+    container_name: redis
+    image: redis:alpine
+    # add the custom conf file to use and add a custom password (mypassword)
+    command: redis-server /usr/local/etc/redis/redis.conf --requirepass mypassword
+    ports:
+      - "6379:6379"
+    volumes:
+      - $PWD/redis.conf:/usr/local/etc/redis/redis.conf
